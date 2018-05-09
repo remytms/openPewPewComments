@@ -11,6 +11,7 @@ REST API for openPewPewComments
 from flask_classy import FlaskView, route, make_response, request
 from flask.json import jsonify
 
+from auth import auth_required
 from db import CommentsManager, GET_FIELD
 
 
@@ -34,7 +35,8 @@ class CommentsView(FlaskView):
             resp_dic['comments'].append(comment_dic)
         return jsonify(resp_dic), 200
 
-    def post(self):
+    @auth_required
+    def post(self, user):
         com_mgr = CommentsManager()
         resp_dic = {'error': False}
         if not request.json:
@@ -58,7 +60,8 @@ class CommentsView(FlaskView):
             return jsonify(resp_dic), 400
         return jsonify(resp_dic), 200
 
-    def delete(self, comment_id):
+    @auth_required
+    def delete(self, user, comment_id):
         com_mgr = CommentsManager()
         resp_dic = {'error': False}
         if comment_id is None:
@@ -70,7 +73,8 @@ class CommentsView(FlaskView):
             return jsonify(resp_dic), 400
         return jsonify(resp_dic), 200
 
-    def put(self, comment_id):
+    @auth_required
+    def put(self, user, comment_id):
         com_mgr = CommentsManager()
         resp_dic = {'error': False}
         if not request.json:
