@@ -7,10 +7,10 @@
 Authentication process for openPewPewComments
 """
 
+from functools import wraps
 
 from flask import request
 from flask.json import jsonify
-from functools import wraps
 
 import jwt
 

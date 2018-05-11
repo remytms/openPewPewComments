@@ -8,7 +8,7 @@ REST API for openPewPewComments
 """
 
 
-from flask_classy import FlaskView, route, make_response, request
+from flask_classy import FlaskView, route, request
 from flask.json import jsonify
 
 from auth import auth_required
