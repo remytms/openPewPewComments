@@ -18,10 +18,12 @@ from db import CommentsManager, GET_FIELD
 class CommentsView(FlaskView):
     """API for comments"""
 
-    def index(self):
-        return self.get(None)
+    @auth_required
+    def index(self, user=None):
+        return self.get()
 
-    def get(self, comment_id):
+    @auth_required
+    def get(self, user=None, comment_id=None):
         com_mgr = CommentsManager()
         resp_dic = {'comments': []}
         if comment_id is None:
