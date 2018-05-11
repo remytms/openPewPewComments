@@ -36,5 +36,5 @@ def auth_required(func):
                 {'error': "No auth possible: Token is invalid"}
             ), 401
 
-        return func(user, *args, **kw)
+        return func(user=user, *args, **kw)
     return decorated

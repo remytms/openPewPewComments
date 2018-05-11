@@ -36,7 +36,7 @@ class CommentsView(FlaskView):
         return jsonify(resp_dic), 200
 
     @auth_required
-    def post(self, user):
+    def post(self, user=None):
         com_mgr = CommentsManager()
         resp_dic = {'error': False}
         if not request.json:
@@ -61,7 +61,7 @@ class CommentsView(FlaskView):
         return jsonify(resp_dic), 200
 
     @auth_required
-    def delete(self, user, comment_id):
+    def delete(self, user=None, comment_id=None):
         com_mgr = CommentsManager()
         resp_dic = {'error': False}
         if comment_id is None:
@@ -74,7 +74,7 @@ class CommentsView(FlaskView):
         return jsonify(resp_dic), 200
 
     @auth_required
-    def put(self, user, comment_id):
+    def put(self, user=None, comment_id=None):
         com_mgr = CommentsManager()
         resp_dic = {'error': False}
         if not request.json:
