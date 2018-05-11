@@ -17,11 +17,14 @@ from db import CommentsManager, GET_FIELD
 
 class CommentsView(FlaskView):
     """API for comments"""
+    route_base = '/'
 
+    @route('/comments', methods=['GET'])
     @auth_required
     def index(self, user=None):
         return self.get()
 
+    @route('/comments/<comment_id>', methods=['GET'])
     @auth_required
     def get(self, user=None, comment_id=None):
         com_mgr = CommentsManager()
@@ -37,6 +40,7 @@ class CommentsView(FlaskView):
             resp_dic['comments'].append(comment_dic)
         return jsonify(resp_dic), 200
 
+    @route('/comments', methods=['POST'])
     @auth_required
     def post(self, user=None):
         com_mgr = CommentsManager()
@@ -62,6 +66,7 @@ class CommentsView(FlaskView):
             return jsonify(resp_dic), 400
         return jsonify(resp_dic), 200
 
+    @route('/comments', methods=['DELETE'])
     @auth_required
     def delete(self, user=None, comment_id=None):
         com_mgr = CommentsManager()
@@ -75,6 +80,7 @@ class CommentsView(FlaskView):
             return jsonify(resp_dic), 400
         return jsonify(resp_dic), 200
 
+    @route('/comments', methods=['PUT'])
     @auth_required
     def put(self, user=None, comment_id=None):
         com_mgr = CommentsManager()
