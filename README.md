@@ -7,5 +7,5 @@ the comments in the application.
 This project is related with :
 
 - [openPewPewComments](https://github.com/Swype545/openPewPewPosts)
-- openPewPewUsers
-- openPewPewFrontEnd
+- [openPewPewUsers](https://github.com/hadriencools/openPiouPiouAuthService)
+- [openPewPewFrontEnd](https://github.com/hadriencools/openPiouPiouFrontEnd)
