@@ -17,6 +17,7 @@ from comments import CommentsView
 import sqlite3
 
 app = Flask(__name__)
+CORS(app)
 message = ""
 
 
@@ -120,4 +121,3 @@ CommentsView.register(app)
 
 if __name__ == "__main__":
     app.run(port=8080)
-    CORS(app)
